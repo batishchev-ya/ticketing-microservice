@@ -40,6 +40,7 @@ userSchema.pre('save', async function(done) {
 userSchema.statics.build = (attrs: UserAttrs) => {
   return new User(attrs);
 };
+// here <UserDoc, UserModel> means that we pass types UserDoc and UserModel as arguments in function model. model method will return UserModel after calling it because we provided UserModel as second argument. UserDoc says that model method will work with userSchema created earlier.
 const User = mongoose.model<UserDoc, UserModel>('User', userSchema);
 
 export { User };
