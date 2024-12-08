@@ -11,7 +11,6 @@ export class BadRequestError extends CustomError {
   serializeErrors() {
     return [{
       message: this.message,
-
     }];
   }
 }
