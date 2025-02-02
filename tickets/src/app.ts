@@ -8,6 +8,7 @@ import { errorHandler, NotFoundError, currentUser } from "@yabtickets/common";
 import { createTicketsRouter } from "./routes/new";
 import { showTicketRouter } from "./routes/show";
 import { indexTicketRouter } from "./routes";
+import { updateTicketRouter } from "./routes/update";
 
 
 const app = express();
@@ -22,6 +23,7 @@ app.use(currentUser);
 app.use(createTicketsRouter);
 app.use(showTicketRouter);
 app.use(indexTicketRouter);
+app.use(updateTicketRouter)
 
 app.all('*', async (req, res, next) => {
   throw new NotFoundError();
