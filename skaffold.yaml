@@ -1,8 +1,12 @@
+# before running, execute kubectl apply -f infra/k8s/db/mongo-pvc.yaml, that will create a persistent volume and persistent volume claim for mongo users db. after stopping development, execute kubectl delete -f infra/k8s/db/mongo-pvc.yaml to delete them.
+# Should integrate pv and pvc with Skaffold, but for now it's just a simple yaml file.
+
 apiVersion: skaffold/v4beta11
 kind: Config
 manifests:
   rawYaml:
-    - ./infra/k8s/*
+    # - ./infra/k8s/db/*
+    - ./infra/k8s/apps/*
 build:
   local:
     push: false

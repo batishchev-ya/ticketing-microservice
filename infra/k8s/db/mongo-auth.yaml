@@ -1,0 +1,32 @@
+# It's better to integrate it with Skaffold, but for now it's just a simple yaml file
+
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-pv
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: manual  # Добавляем StorageClass
+  hostPath:
+    # Should be kinda variable, for now it's hardcoded
+    path: '/Users/yaroslav/mongo-data'
+    type: DirectoryOrCreate
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mongo-pvc
+spec:
+  storageClassName: manual  # Должен совпадать с PV
+  volumeName: mongo-pv       # PVC привязывается к конкретному PV
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi

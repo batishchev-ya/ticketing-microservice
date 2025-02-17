@@ -15,6 +15,14 @@ spec:
       containers:
         - name: auth-mongo
           image: mongo
+          args: ["--dbpath", "/data/db"]
+          volumeMounts:
+            - mountPath: /data/db
+              name: mongo-storage
+      volumes:
+        - name: mongo-storage
+          persistentVolumeClaim:
+            claimName: mongo-pvc
 ---
 apiVersion: v1
 kind: Service
