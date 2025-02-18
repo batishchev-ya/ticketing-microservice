@@ -21,6 +21,9 @@ jobs:
       with:
         node-version: 22
         cache: 'npm'
-    - run: cd tickets
-    - run: npm i
-    - run: npm test
+    - run: 
+          cd tickets
+          npm ci
+          npm test
+    # - run: npm ci
+    # - run: npm test
