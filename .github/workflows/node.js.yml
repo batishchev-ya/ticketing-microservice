@@ -28,5 +28,5 @@ jobs:
       run: |
         cd ${{ matrix.project }} 
         npm install
-        npm test -- --ci
+        npm test -- --watchAll=false
 
